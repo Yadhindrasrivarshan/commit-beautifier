@@ -1,0 +1,33 @@
+{
+  "name": "commit-beautifier",
+  "version": "0.1.0",
+  "description": "Structured CLI for Conventional Commit messages",
+  "bin": {
+    "commit-beautifier": "bin/commit-beautifier.js"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": ["git", "commit", "cli", "conventional-commits"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yadhindrasrivarshan/commit-beautifier.git"
+  },
+  "author": "Yadhindra yadhindrasrivarshan@gmail.com",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "inquirer": "^9.2.10",
+    "execa": "^8.0.0",
+    "chalk": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
