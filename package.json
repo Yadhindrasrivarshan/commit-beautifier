@@ -5,6 +5,7 @@
   "bin": {
     "commit-beautifier": "bin/commit-beautifier.js"
   },
+  "main": "lib/validator.js",
   "type": "module",
   "files": [
     "bin/",
@@ -21,6 +22,9 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "start": "node bin/commit-beautifier.js"
   },
   "dependencies": {
     "commander": "^11.0.0",
