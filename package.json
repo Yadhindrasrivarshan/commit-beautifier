@@ -5,6 +5,7 @@
   "bin": {
     "commit-beautifier": "bin/commit-beautifier.js"
   },
+  "type": "module",
   "files": [
     "bin/",
     "lib/",
