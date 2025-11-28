@@ -12,7 +12,7 @@ program
   .option("--summary <summary>", "short summary (1-72 chars)")
   .option("--body <body>", "longer description (optional)")
   .option("--ticket <ticket>", "ticket id to append in footer (e.g. ABC-123)")
-  .option("--scope <scope>", "commit scope (optional)")
+  .option("--dry-run", "preview the commit without applying")
   .option("--apply", "apply the commit (requires staged changes)")
   .option("--yes", "auto-confirm (non-interactive)")
   .parse(process.argv);
@@ -24,24 +24,25 @@ const opts = program.opts();
 
   let details = null;
 
-  const nonInteractiveProvided = opts.type || opts.summary || opts.body || opts.scope || opts.ticket;
+  const nonInteractiveProvided = opts.type || opts.summary || opts.body || opts.scope || opts.ticket || opts.dryRun;
   if (nonInteractiveProvided) {
     details = {
       type: opts.type,
       scope: opts.scope,
       summary: opts.summary,
       body: opts.body,
-      ticket: opts.ticket
+      ticket: opts.ticket,
+      dryRun: opts.dryRun
     };
     if ((!details.type || !details.summary) && !opts.yes) {
       console.log(chalk.yellow("Some required fields are missing from flags — falling back to interactive prompts."));
-      details = await promptCommitDetails({ defaults: details });
+      details = await promptCommitDetails(details);
     } else if ((!details.type || !details.summary) && opts.yes) {
       console.error(chalk.red("Error: type and summary are required when using non-interactive --yes mode."));
       process.exit(1);
     }
   } else {
-    details = await promptCommitDetails();
+    details = await promptCommitDetails(details);
   }
 
   // If ticket not provided, attempt to parse from branch

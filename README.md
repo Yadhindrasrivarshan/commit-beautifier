@@ -38,8 +38,10 @@ npm link
 ### Basic Interactive Mode
 
 ```bash
-commit-beautifier
+commit-beautifier --dry-run
 ```
+
+**dry-run** allows you to not commit the things directly just like a test or sample referenced
 
 This launches an interactive prompt where you select:
 1. **Type** — Choose from predefined commit types
@@ -61,7 +63,7 @@ commit-beautifier \
 ### Dry Run (preview only)
 
 ```bash
-commit-beautifier --type fix --summary "Fix memory leak" --yes
+commit-beautifier --type fix --summary "Fix memory leak" --yes --dry-run
 ```
 
 Shows the formatted message without committing.
